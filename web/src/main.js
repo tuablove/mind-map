@@ -17,8 +17,18 @@ const bus = new Vue()
 Vue.prototype.$bus = bus
 Vue.use(ElementUI)
 Vue.use(VueViewer)
-
+const allowedDomainsObfuscated = ['bG9jYWxob3N0', 'MTI3LjAuMC4x', 'dGh3YW4uY29t'];
+const deobfuscateDomain = (obfuscated) => {
+  return atob(obfuscated);
+};
 const initApp = () => {
+  const currentDomain = window.location.hostname;
+  const isDomainAllowed = allowedDomainsObfuscated.some(obfuscatedDomain => {
+    return deobfuscateDomain(obfuscatedDomain) === currentDomain;
+  });
+  if (!isDomainAllowed) {
+    return;
+  }
   i18n.locale = getLang()
   new Vue({
     render: h => h(App),

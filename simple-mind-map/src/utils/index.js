@@ -745,9 +745,10 @@ export const removeRichTextStyes = html => {
 
 // 判断是否是移动端环境
 export const isMobile = () => {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  )
+  return true;
+  // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  //   navigator.userAgent
+  // )
 }
 
 // 获取对象改变了的的属性
